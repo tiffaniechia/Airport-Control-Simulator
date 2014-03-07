@@ -15,14 +15,14 @@ end
 
 it "should be able to land" do 
 	plane.fly
-	plane.land
+	plane.landing
 	expect(plane.flying?).to be_true
 end	
 
 it "should know if it is flying" do
 	plane.fly
 	expect(plane.flying?).to be_true
-	plane.stationary
+	plane.landed
 	expect(plane.flying?).to be_false
 end	
 

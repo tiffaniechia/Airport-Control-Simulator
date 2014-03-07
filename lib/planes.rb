@@ -1,14 +1,14 @@
 class Planes
 
 def initialize 
-	stationary
+	landed
 end	
 
 def flying?
 	@flying 
 end	
 
-def stationary
+def landed
 	@flying = false
 end	
 
@@ -16,7 +16,7 @@ def fly
 	@flying = true	
 end 
 
-def land
+def landing
 	fly
 end 
 
