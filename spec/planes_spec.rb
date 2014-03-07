@@ -16,13 +16,13 @@ end
 it "should be able to land" do 
 	plane.fly
 	plane.land
-	expect(plane.flying?).not_to be_true
+	expect(plane.flying?).to be_true
 end	
 
 it "should know if it is flying" do
 	plane.fly
 	expect(plane.flying?).to be_true
-	plane.land
+	plane.stationary
 	expect(plane.flying?).to be_false
 end	
 
@@ -31,6 +31,7 @@ it "should be able to fly after taking off" do
 	plane.takeoff
 	expect(plane.flying?).to be_true
 end
+
 
 
 end	
