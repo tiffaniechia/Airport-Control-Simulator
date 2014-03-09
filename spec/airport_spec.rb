@@ -18,66 +18,77 @@ let(:weather) {Weather.new}
 	end	
 
 	it "should be able to take a landing plane" do 
+		weather.stub(:generate_weather).and_return(2)
 		expect(airport.plane_count).to eq(0)
-		airport.park(plane)
+		airport.park(plane, weather)
 		expect(airport.plane_count).to eq(1)
 	end	
 
 	it "should be able to let a plane take off" do
+		weather.stub(:generate_weather).and_return(2)
 		expect(airport.plane_count).to eq(0)
-		airport.park(plane)
+		airport.park(plane, weather)
 		expect(airport.plane_count).to eq(1)
-		airport.release(plane)
+		airport.release(plane, weather)
 		expect(airport.plane_count).to eq(0)
 	end
 
 
 	it "should change flying status of plane after landing " do
-		airport.park(plane)
+		weather.stub(:generate_weather).and_return(2)
+		airport.park(plane, weather)
 		expect(plane).not_to be_flying
 	end	
 
 	it "should change flying status of plane after released" do
-		airport.park(plane)
+		weather.stub(:generate_weather).and_return(2)
+		airport.park(plane, weather)
 		expect(plane).not_to be_flying
-		airport.release(plane)
+		airport.release(plane, weather)
 		expect(plane).to be_flying
 	end	
 
 	it "should know when max capacity has been reached" do
+		weather.stub(:generate_weather).and_return(2)
 		expect(airport.full?).to be_false
-		(airport.capacity).times {airport.park(Plane.new)}
+		(airport.capacity).times {airport.park(Plane.new, weather)}
 		expect(airport.plane_count).to eq(10)
 		expect(airport.full?).to be_true
 	end	
 
 	it "should not allow planes to land if airport is full" do
+		weather.stub(:generate_weather).and_return(2)
 		expect(airport.full?).to be_false
-		(airport.capacity).times {airport.park(Plane.new)}
+		(airport.capacity).times {airport.park(Plane.new, weather)}
 		expect(airport.full?).to be_true
-		expect{(airport.park(Plane.new))}.to raise_error(RuntimeError)
+		expect{(airport.park(Plane.new, weather))}.to raise_error(RuntimeError)
 	end	
 
 	it "should not be able to park a plane again if plane has already been parked" do
-		airport.park(plane)
-		expect{(airport.park(plane))}.to raise_error(RuntimeError)
+		weather.stub(:generate_weather).and_return(2)
+		airport.park(plane, weather)
+		expect{(airport.park(plane, weather))}.to raise_error(RuntimeError)
 	end	
 
 	it "should not be able to release a plane again if plane has already been released" do
-		airport.park(plane)
-		airport.release(plane)
-		expect{(airport.release(plane))}.to raise_error(RuntimeError)
+		weather.stub(:generate_weather).and_return(2)
+		airport.park(plane, weather)
+		airport.release(plane, weather)
+		expect{(airport.release(plane, weather))}.to raise_error(RuntimeError)
 	end	
 
 
-	it "should not be able to take off if stormy" do
-    weather = Weather.new
+	it "should not be able to park if stormy" do
    	weather.stub(:generate_weather).and_return(1)
    	expect(weather).to be_stormy
-   	expect{(airport.park(plane))}.to raise_error(RuntimeError)
+   	expect{(airport.park(plane, weather))}.to raise_error(RuntimeError)
   end	
 
-   
+   	it "should not be able to release if stormy" do
+   	weather.stub(:generate_weather).and_return(1)
+   	expect(weather).to be_stormy
+   	expect{(airport.release(plane, weather))}.to raise_error(RuntimeError)
+  end	
 
 
 
