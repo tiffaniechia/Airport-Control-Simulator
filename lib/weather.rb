@@ -1,26 +1,23 @@
-class Weather
-
-	attr_accessor :sunny
+module Weather
 
 	def generate_weather
-	rand(30)
-	end
-
-	def stormy
-		if generate_weather == 1 
-			@sunny = false
-		end	
-	end	
-
-	def sunny
-		if generate_weather != 1 
+		generate = rand(30)
+		if generate == 1 
+			@sunny = false # sets the value
+		else 
 			@sunny = true
 		end	
 	end		
 
-	def weather?
-		@sunny
+	def sunny?
+		generate_weather
+		@sunny # read the value
 	end	
+
+	def stormy?
+		generate_weather
+		!@sunny # not sunny
+	end
 
 
 end
