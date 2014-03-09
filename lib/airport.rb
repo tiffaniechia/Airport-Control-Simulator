@@ -1,3 +1,6 @@
+
+
+
 class Airport
 
 	def initialize
@@ -15,6 +18,7 @@ class Airport
 	def park(plane)
 		raise "Not allowed to land twice" if !plane.flying?   
 		raise "Airport is full" if full?
+		# raise "Not allowed to land if stormy" if weather.stormy?
 		@planes << plane
 		plane.land
 	end
@@ -30,9 +34,7 @@ class Airport
 		plane_count == capacity
 	end
 
-	# def empty?
-	# 	plane_count = 0
-	# end	
+
 
 
 end	

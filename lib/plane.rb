@@ -1,5 +1,6 @@
 class Plane
 
+
 	def initialize 
 		take_off
 	end	

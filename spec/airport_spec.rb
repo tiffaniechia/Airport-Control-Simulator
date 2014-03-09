@@ -1,10 +1,12 @@
 require './lib/plane'
 require './lib/airport'
+require './lib/weather'
 
 describe Airport do
 
 let(:airport) {Airport.new}
 let(:plane) {Plane.new}
+let(:weather) {Weather.new}
 
 	it "should start with zero planes" do
 		expect(airport.plane_count).to eq(0)
@@ -68,10 +70,16 @@ let(:plane) {Plane.new}
 	end	
 
 
-	it "should not allow plane to fly if stormy" do
-		weather = Weather.new
-		weather.
-	end	
+	it "should not be able to take off if stormy" do
+    weather = Weather.new
+   	weather.stub(:generate_weather).and_return(1)
+   	expect(weather).to be_stormy
+   	expect{(airport.park(plane))}.to raise_error(RuntimeError)
+  end	
+
+   
+
+
 
 
 end

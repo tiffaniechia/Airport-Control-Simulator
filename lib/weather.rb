@@ -1,7 +1,11 @@
-module Weather
+
+
+class Weather
+
+
 
 	def generate_weather
-		generate = rand(30)
+		generate = rand(10)
 		if generate == 1 
 			@sunny = false # sets the value
 		else 
