@@ -1,6 +1,18 @@
-Writing a software to control the flow of planes at an airport. The planes can land and take off provided that the weather is sunny. Occasionally it may be stormy, in which case no planes can land or take off.
+##Airport Control - OOP Test
+The goal of this test was to demonstrate our grasp of Object Oriented Programming. The aim was to create a ruby application that would control the flow of planes at an airport that has a fixed capacity.
 
-# Feedback
+
+A weather extension was included such that planes can only land and take off under sunny conditions.
+
+This task was set by [Antony Denyer](https://github.com/antonydenyer)
+
+##Stack:
+- Ruby
+- TDD - RSpec
+
+## 
+
+# Feedback- [Antony Denyer](https://github.com/antonydenyer)
 
 ```
 def park(plane, weather)
