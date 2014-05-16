@@ -4,13 +4,15 @@ The goal of this test was to demonstrate our grasp of Object Oriented Programmin
 
 A weather extension was included such that planes can only land and take off under sunny conditions.
 
-This task was set by [Antony Denyer](https://github.com/antonydenyer)
+This task was set by [Antony Denyer](https://github.com/antonydenyer).
 
-##Stack:
+(Week 3)
+
+##Technologies Used
 - Ruby
 - TDD - RSpec
 
-## 
+##  
 
 # Feedback- [Antony Denyer](https://github.com/antonydenyer)
 
